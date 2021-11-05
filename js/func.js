@@ -76,7 +76,6 @@ function changeData(persona) {
   var spinner = document.getElementById("spinner");
   spinner.style.cssText = "visibility: initial;";
   var nombre = document.getElementById("name").value;
-  var cuatrimeste = document.getElementById("localidades").value;
   var fecha = document.getElementById("fecha").value;
   var sexo;
 
@@ -119,47 +118,50 @@ function sendModify() {
 }
 
 function validDate(date) {
-  if (new Date(date) > new Date()) {
+  var newFecha = date.split("/");
+  console.log(new Date(newFecha[2], newFecha[1], newFecha[0]));
+  console.log(new Date());
+  if (new Date(newFecha[2], newFecha[1] - 1, newFecha[0]) > new Date()) {
     return true;
   } else {
     return false;
   }
 }
 
-function sendDelete(){
-    deleteData(personaAModificar);
+function sendDelete() {
+  deleteData(personaAModificar);
 }
 
 function deleteData(persona) {
-    var spinner = document.getElementById("spinner");
-    spinner.style.cssText = "visibility: initial;";
-    var nombre = document.getElementById("name").value;
-    var cuatrimeste = document.getElementById("localidades").value;
-    var fecha = document.getElementById("fecha").value;
-    var sexo;
-  
-    if (MaleCB.checked) {
-      sexo = "Mañana";
-    } else {
-      sexo = "Noche";
-    }
-  
-    if (validName(nombre) && sexo != null) {
-      let personaJson = {
-        id: persona.children[0].innerHTML,
-        nombre: nombre,
-        cuatrimestre: persona.children[2].innerHTML,
-        fecha: fecha,
-        turno: sexo,
-      };
-      var nombreBox = document.getElementById("name");
-      var table = document.getElementById("containerTable");
-      nombreBox.style.cssText = "border-color: black;";
-      table.style.cssText = "visibility: hidden;";
-      deleteSomeoneData(personaJson, persona);
-    } else {
-      spinner.style.cssText = "visibility: hidden;";
-      var nombreBox = document.getElementById("name");
-      nombreBox.style.cssText = "border-color: red;";
-    }
+  var spinner = document.getElementById("spinner");
+  spinner.style.cssText = "visibility: initial;";
+  var nombre = document.getElementById("name").value;
+  var cuatrimeste = document.getElementById("localidades").value;
+  var fecha = document.getElementById("fecha").value;
+  var sexo;
+
+  if (MaleCB.checked) {
+    sexo = "Mañana";
+  } else {
+    sexo = "Noche";
   }
+
+  if (validName(nombre) && sexo != null) {
+    let personaJson = {
+      id: persona.children[0].innerHTML,
+      nombre: nombre,
+      cuatrimestre: persona.children[2].innerHTML,
+      fecha: fecha,
+      turno: sexo,
+    };
+    var nombreBox = document.getElementById("name");
+    var table = document.getElementById("containerTable");
+    nombreBox.style.cssText = "border-color: black;";
+    table.style.cssText = "visibility: hidden;";
+    deleteSomeoneData(personaJson, persona);
+  } else {
+    spinner.style.cssText = "visibility: hidden;";
+    var nombreBox = document.getElementById("name");
+    nombreBox.style.cssText = "border-color: red;";
+  }
+}
