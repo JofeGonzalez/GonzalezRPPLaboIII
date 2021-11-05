@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="/css/style.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Koh+Santepheap:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <title>EjercicioLabo3JoseGonzalez</title>
+  </head>
+  <body>
+    <div class="container-form" id="containerForm">
+      <div class="form-button">
+        <button class="closeform" onclick="closeForm()">
+          <i class="far fa-times-circle"></i>
+        </button>
+      </div>
+      <div class="inpts">
+        <input type="text" id="name" placeholder="Nombre..." />
+        <select name="localidades" id="localidades" disabled>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <input type="datetime" name="fecha" id="fecha" >
+      </div>
+      <div class="radios">
+        <label for="MaleCB">
+          <input type="radio" name="MaleCB" id="MaleCB" />
+          Mañana
+        </label>
+        <label for="FemaleCB">
+          <input type="radio" name="FemaleCB" id="FemaleCB" />
+          Noche
+        </label>
+      </div>
+      <div class="btones">
+        <button id="modify" class="btn">
+          <i class="far fa-save"></i> Modificar
+        </button>
+        <button id="delete" class="btn">
+            <i class="far fa-trash-alt"></i> Eliminar
+          </button>
+      </div>
+    </div>
+    <div class="container-table" id="containerTable">
+      <table id="table" class="contacts-table">
+        <thead ondblclick="openForm()">
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Cuatrimestre</th>
+            <th>Fecha Final</th>
+            <th>Turno</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+  </div>
+  <div id="spinner">
+    <div class="sk-chase">
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+      <div class="sk-chase-dot"></div>
+    </div>
+    <script src="/js/func.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
